@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        .todo-container{
+    width:500px;
+    height:200px;
+    margin-top:5%;
+    margin-left: 10%;
+    margin-right: 20%;
+    background-color:rgb(243, 226, 78);
+   }
+   h1{
+    color:purple;
+   }
+   button{
+    background-color: rgb(78, 184, 78);
+    color:white;
+   }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <center>
+        <h1>To-Do List</h1>
+        
+        <input type="text" id="taskInput" placeholder="Enter a new task">
+        <button onclick="addTask()">Add Task</button>
+        </center>
+    </div>
+    
+    <div class="list">
+        <ul id="taskList"></ul>
+    </div>
+
+<script>
+function addTask() {
+    const taskInput = document.getElementById('taskInput');
+    const task = taskInput.value;
+    const li = document.createElement('li');
+    li.textContent = task;
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.onclick = function() {
+        deleteTask(li);
+    };
+
+    li.appendChild(deleteButton);
+    document.getElementById('taskList').appendChild(li);
+    taskInput.value = ''; // Clear input field after adding the task
+}
+
+function deleteTask(taskItem) {
+    taskItem.remove();
+}
+</script>
+</body>
+</html>
+
